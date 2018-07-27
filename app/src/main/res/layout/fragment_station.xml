@@ -1,0 +1,88 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                tools:ignore="RtlHardcoded">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/headline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textStyle="bold"
+                tools:text="Name of the station"/>
+
+            <TextView
+                android:id="@+id/boroughs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/headline"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                tools:text="Boroughs appear here"/>
+
+            <com.wefika.flowlayout.FlowLayout
+                android:id="@+id/lines"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/boroughs"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:gravity="top"/>
+
+            <LinearLayout
+                android:id="@+id/buttons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lines"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/showOnOurMap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/show_on_map"/>
+
+                <Button
+                    android:id="@+id/showOnAnyMap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/show_on_google_map"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/items"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/buttons"
+                android:orientation="vertical"/>
+
+            <!--de.topobyte.android.util.NestedListView
+                android:id="@+id/list"
+                android:layout_below="@id/buttons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/-->
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

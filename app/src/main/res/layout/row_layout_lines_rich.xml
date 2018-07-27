@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|center_horizontal"
+                android:minHeight="?android:attr/listPreferredItemHeight"
+                android:padding="5dip">
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold"/>
+
+    <com.wefika.flowlayout.FlowLayout
+        android:id="@+id/lines"
+        android:layout_below="@id/text1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center|top"/>
+
+    <!--LinearLayout
+        android:id="@+id/lines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text1"
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="horizontal"/-->
+
+</RelativeLayout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Berlin Nahverkehr Info</string>
+
+    <string name="action_settings">Einstellungen</string>
+    <string name="action_about">Infos</string>
+    <string name="action_swap_direction">Andere Richtung</string>
+
+    <string name="about">Infos</string>
+
+    <string name="search">Suchen</string>
+
+    <string name="network_map">Netzplan</string>
+    <string name="lines">Linien</string>
+    <string name="line">Linie</string>
+    <string name="stations">Stationen</string>
+    <string name="station">Station</string>
+    <string name="stops">Halte</string>
+    <string name="stop">Halt</string>
+
+    <string name="show_on_map">Berlin-Karte</string>
+    <string name="show_on_google_map">Andere Karte</string>
+
+    <string name="map_not_installed">Sie haben die Berlin-Karte noch nicht installiert, aber Sie können Sie kostenlos über Google Play laden.</string>
+    <string name="map_not_new_enough">Sie müssen die Berlin-Karte aktualisieren, bevor Sie Haltestellen dort anzeigen können.</string>
+
+    <string name="about_info1">Diese App wurde entworfen, um Ihnen einen Überblick über das Berliner Nahverkehrssystem zu geben. Sie ist noch nicht ganz fertig, aber stellt schon einige interessante Informationen dar.</string>
+    <string name="about_info2">Die Informationen stammen vom <a href="http://wiki.openstreetmap.org/">OpenStreetMap</a>-Projekt. Die Daten stehen unter der <a href="http://opendatacommons.org/licenses/odbl/">Open Data Commons Open Database License (ODbL).</a></string>
+
+</resources>
