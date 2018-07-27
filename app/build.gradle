@@ -12,7 +12,7 @@ android {
         applicationId "de.topobyte.transportation.info.berlin"
         minSdkVersion 9
         targetSdkVersion 27
-        versionCode 3
+        versionCode 4
         versionName "1.1"
     }
 
