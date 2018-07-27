@@ -44,14 +44,18 @@ public class StationUtil {
   {
     List<Stop> stops = station.getStops();
 
-    double lon = 0;
-    double lat = 0;
+    double lon = station.getLocation().getLongitude();
+    double lat = station.getLocation().getLatitude();
+    int num = 1;
     for (Stop stop : stops) {
-      lon += stop.getLocation().getLongitude();
-      lat += stop.getLocation().getLatitude();
+      if (stop.getLocation() != null) {
+        lon += stop.getLocation().getLongitude();
+        lat += stop.getLocation().getLatitude();
+        num += 1;
+      }
     }
-    lon /= stops.size();
-    lat /= stops.size();
+    lon /= num;
+    lat /= num;
 
     return new Coordinate(lon, lat);
   }
