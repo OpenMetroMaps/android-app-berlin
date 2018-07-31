@@ -66,11 +66,12 @@ public class LinesUtil {
       if (stop == s) {
         continue;
       }
-      // Ignore the explicit opposite line of the one at the passed stop, if any
-      // (i.e. in Berlin, do not show the other Ringbahn at Ringbahn stops) 
-      if (line != s.getLine()) {
+      // Ignore the line of the stop itself
+      if (line == s.getLine()) {
         continue;
       }
+      // TODO: Ignore the explicit opposite line of the one at the passed stop, if any
+      // (i.e. in Berlin, do not show the other Ringbahn at Ringbahn stops).
       lines.add(s.getLine());
     }
     Collections.sort(lines, new Comparator<Line>() {
