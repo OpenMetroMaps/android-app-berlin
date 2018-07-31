@@ -32,6 +32,8 @@ import de.topobyte.transportation.info.ModelLoader;
 
 public class NetworkMapFragment extends Fragment {
 
+  public static String ARG_VIEW_INDEX = "view-index";
+
   NetworkMapView view;
 
   @Override
@@ -42,7 +44,13 @@ public class NetworkMapFragment extends Fragment {
     MapModel model = ModelLoader.loadSafe(getActivity());
     ModelUtil.ensureView(model);
 
-    MapView view = model.getViews().get(0);
+    int viewIndex = 0;
+    Bundle args = getArguments();
+    if (args != null) {
+      viewIndex = args.getInt(ARG_VIEW_INDEX, viewIndex);
+    }
+
+    MapView view = model.getViews().get(viewIndex);
 
     this.view.configure(view, PlanRenderer.StationMode.CONVEX, PlanRenderer.SegmentMode.CURVE);
 

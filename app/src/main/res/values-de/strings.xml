@@ -11,7 +11,8 @@
 
     <string name="search">Suchen</string>
 
-    <string name="network_map">Netzplan</string>
+    <string name="schematic_map">Schematischer Netzplan</string>
+    <string name="geographic_map">Geographischer Netzplan</string>
     <string name="lines">Linien</string>
     <string name="line">Linie</string>
     <string name="stations">Stationen</string>

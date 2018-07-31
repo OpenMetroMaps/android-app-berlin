@@ -11,7 +11,8 @@
 
     <string name="search">Search</string>
 
-    <string name="network_map">Network map</string>
+    <string name="schematic_map">Schematic map</string>
+    <string name="geographic_map">Geographic map</string>
     <string name="lines">Lines</string>
     <string name="line">Line</string>
     <string name="stations">Stations</string>

@@ -44,7 +44,8 @@ public class StartFragment extends Fragment implements ClickDelegate {
   private static final int ID_LINES = 0;
   private static final int ID_STATIONS = 1;
   private static final int ID_ABOUT = 2;
-  private static final int ID_NETWORK_MAP = 3;
+  private static final int ID_SCHEMATIC_MAP = 3;
+  private static final int ID_GEOGRAPHIC_MAP = 4;
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,8 +55,10 @@ public class StartFragment extends Fragment implements ClickDelegate {
 
     MapModel model = ModelLoader.loadSafe(getActivity());
 
-    view.findViewById(R.id.buttonNetworkMap).setOnClickListener(
-        new ClickListener(this, ID_NETWORK_MAP));
+    view.findViewById(R.id.buttonNetworkMapSchematic).setOnClickListener(
+        new ClickListener(this, ID_SCHEMATIC_MAP));
+    view.findViewById(R.id.buttonNetworkMapGeographic).setOnClickListener(
+        new ClickListener(this, ID_GEOGRAPHIC_MAP));
     view.findViewById(R.id.buttonLines).setOnClickListener(
         new ClickListener(this, ID_LINES));
     view.findViewById(R.id.buttonStations).setOnClickListener(
@@ -70,9 +73,20 @@ public class StartFragment extends Fragment implements ClickDelegate {
   public void onClick(int id)
   {
     switch (id) {
-      case ID_NETWORK_MAP:
-        startActivity(new Intent(getActivity(), NetworkMapActivity.class));
+      case ID_SCHEMATIC_MAP: {
+        Intent intent = new Intent(getActivity(), NetworkMapActivity.class);
+        intent.putExtra(NetworkMapActivity.EXTRA_TITLE, getString(R.string.schematic_map));
+        intent.putExtra(NetworkMapActivity.EXTRA_VIEW_INDEX, 0);
+        startActivity(intent);
         break;
+      }
+      case ID_GEOGRAPHIC_MAP: {
+        Intent intent = new Intent(getActivity(), NetworkMapActivity.class);
+        intent.putExtra(NetworkMapActivity.EXTRA_TITLE, getString(R.string.geographic_map));
+        intent.putExtra(NetworkMapActivity.EXTRA_VIEW_INDEX, 1);
+        startActivity(intent);
+        break;
+      }
       case ID_LINES:
         startActivity(new Intent(getActivity(), LinesActivity.class));
         break;

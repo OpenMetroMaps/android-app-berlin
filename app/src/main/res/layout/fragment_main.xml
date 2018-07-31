@@ -11,14 +11,20 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/buttonNetworkMap"
+            android:id="@+id/buttonNetworkMapSchematic"
             style="@style/MainButtonStyle"
-            android:text="@string/network_map"/>
+            android:text="@string/schematic_map"/>
+
+        <Button
+            android:id="@+id/buttonNetworkMapGeographic"
+            style="@style/MainButtonStyle"
+            android:layout_below="@+id/buttonNetworkMapSchematic"
+            android:text="@string/geographic_map"/>
 
         <Button
             android:id="@+id/buttonLines"
             style="@style/MainButtonStyle"
-            android:layout_below="@+id/buttonNetworkMap"
+            android:layout_below="@+id/buttonNetworkMapGeographic"
             android:text="@string/lines"/>
 
         <Button

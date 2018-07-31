@@ -28,6 +28,9 @@ import de.topobyte.transportation.info.map.NetworkMapFragment;
 
 public class NetworkMapActivity extends ToolbarActivity {
 
+  public static String EXTRA_VIEW_INDEX = "view-index";
+  public static String EXTRA_TITLE = "title_sdfs";
+
   @Override
   protected void onCreate(Bundle savedInstanceState)
   {
@@ -35,12 +38,22 @@ public class NetworkMapActivity extends ToolbarActivity {
 
     setContentView(R.layout.activity_with_toolbar);
 
+    String title = getIntent().getStringExtra(EXTRA_TITLE);
+
     setupToolbar();
-    getSupportActionBar().setTitle(R.string.network_map);
+    getSupportActionBar().setTitle(title);
 
     if (savedInstanceState == null) {
+      int viewIndex = getIntent().getIntExtra(EXTRA_VIEW_INDEX, 0);
+
+      Bundle args = new Bundle();
+      args.putInt(NetworkMapFragment.ARG_VIEW_INDEX, viewIndex);
+
+      NetworkMapFragment fragment = new NetworkMapFragment();
+      fragment.setArguments(args);
+
       getSupportFragmentManager().beginTransaction()
-          .add(R.id.container, new NetworkMapFragment()).commit();
+          .add(R.id.container, fragment).commit();
     }
   }
 
