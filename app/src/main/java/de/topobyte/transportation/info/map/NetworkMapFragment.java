@@ -17,12 +17,16 @@
 
 package de.topobyte.transportation.info.map;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.WindowManager;
 
 import org.openmetromaps.maps.MapModel;
 import org.openmetromaps.maps.MapView;
@@ -57,12 +61,19 @@ public class NetworkMapFragment extends Fragment {
       viewIndex = args.getInt(ARG_VIEW_INDEX, viewIndex);
     }
 
-    MapView view = model.getViews().get(viewIndex);
+    DisplayMetrics metrics = new DisplayMetrics();
+    WindowManager windowManager = (WindowManager) getActivity()
+        .getSystemService(Context.WINDOW_SERVICE);
+    Display display = windowManager.getDefaultDisplay();
+    display.getMetrics(metrics);
 
-    this.view.configure(view, PlanRenderer.StationMode.CONVEX, PlanRenderer.SegmentMode.CURVE);
+    MapView view = model.getViews().get(viewIndex);
+    MapView scaled = ModelUtil.getScaledInstance(view, metrics.density);
+
+    this.view.configure(scaled, PlanRenderer.StationMode.CONVEX, PlanRenderer.SegmentMode.CURVE);
 
     if (savedInstanceState == null) {
-      addStartPositionSetter(view.getConfig().getStartPosition(), 1);
+      addStartPositionSetter(scaled.getConfig().getStartPosition(), 1);
     } else {
       double positionX = savedInstanceState.getDouble(STATE_POS_X);
       double positionY = savedInstanceState.getDouble(STATE_POS_Y);
