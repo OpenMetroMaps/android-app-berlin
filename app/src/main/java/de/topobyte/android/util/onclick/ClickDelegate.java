@@ -19,6 +19,6 @@ package de.topobyte.android.util.onclick;
 
 public interface ClickDelegate {
 
-  public void onClick(int id);
+  void onClick(int id);
 
 }
