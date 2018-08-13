@@ -113,7 +113,7 @@ public class LineStopsFragment extends Fragment {
     View view = inflater.inflate(R.layout.fragment_line_stops, container,
         false);
 
-    list = (ListView) view.findViewById(R.id.list);
+    list = view.findViewById(R.id.list);
 
     updateToolbar();
 
@@ -206,8 +206,8 @@ public class LineStopsFragment extends Fragment {
       Line line = stop.getLine();
       Station station = stop.getStation();
 
-      TextView text1 = (TextView) view.findViewById(R.id.text1);
-      FlowLayout linesContainer = (FlowLayout) view.findViewById(R.id.lines);
+      TextView text1 = view.findViewById(R.id.text1);
+      FlowLayout linesContainer = view.findViewById(R.id.lines);
       text1.setText(station.getName());
 
       LinesUtil.setupLinesInLayout(LineStopsFragment.this, linesContainer, stop);

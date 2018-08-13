@@ -78,8 +78,8 @@ public class StationsFragment extends Fragment {
     View view = inflater.inflate(R.layout.fragment_stations, container,
         false);
 
-    edit = (EditText) view.findViewById(R.id.editText);
-    list = (ListView) view.findViewById(R.id.list);
+    edit = view.findViewById(R.id.editText);
+    list = view.findViewById(R.id.list);
 
     Clearable.setClearable(edit);
 
@@ -126,8 +126,8 @@ public class StationsFragment extends Fragment {
     @Override
     public void fill(View view, Station station)
     {
-      TextView text1 = (TextView) view.findViewById(R.id.text1);
-      FlowLayout linesContainer = (FlowLayout) view.findViewById(R.id.lines);
+      TextView text1 = view.findViewById(R.id.text1);
+      FlowLayout linesContainer = view.findViewById(R.id.lines);
       text1.setText(station.getName());
 
       linesContainer.removeAllViews();

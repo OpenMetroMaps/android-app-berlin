@@ -124,12 +124,12 @@ public class StationFragment extends Fragment {
     View view = inflater.inflate(R.layout.fragment_station, container,
         false);
 
-    TextView headline = (TextView) view.findViewById(R.id.headline);
-    FlowLayout linesContainer = (FlowLayout) view.findViewById(R.id.lines);
-    TextView boroughs = (TextView) view.findViewById(R.id.boroughs);
-    Button showOnOurMap = (Button) view.findViewById(R.id.showOnOurMap);
-    Button showOnGenericMap = (Button) view.findViewById(R.id.showOnAnyMap);
-    LinearLayout items = (LinearLayout) view.findViewById(R.id.items);
+    TextView headline = view.findViewById(R.id.headline);
+    FlowLayout linesContainer = view.findViewById(R.id.lines);
+    TextView boroughs = view.findViewById(R.id.boroughs);
+    Button showOnOurMap = view.findViewById(R.id.showOnOurMap);
+    Button showOnGenericMap = view.findViewById(R.id.showOnAnyMap);
+    LinearLayout items = view.findViewById(R.id.items);
 
     headline.setText(station.getName());
 
@@ -234,7 +234,7 @@ public class StationFragment extends Fragment {
       final StopWithDirectedLine stop = dstops.get(i);
       View row = li.inflate(R.layout.row_layout_lines, items, false);
 
-      TextView text = (TextView) row.findViewById(R.id.text1);
+      TextView text = row.findViewById(R.id.text1);
 
       final Line line = stop.getStop().getLine();
       List<Stop> lineStops = line.getStops();

@@ -35,7 +35,7 @@ public class ToolbarActivity extends AppCompatActivity {
 
   protected void setupToolbar()
   {
-    toolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
+    toolbar = findViewById(R.id.my_awesome_toolbar);
     setSupportActionBar(toolbar);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
   }

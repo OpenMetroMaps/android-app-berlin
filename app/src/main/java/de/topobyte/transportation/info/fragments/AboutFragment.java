@@ -41,7 +41,7 @@ public class AboutFragment extends Fragment {
                            Bundle savedInstanceState)
   {
     View view = inflater.inflate(R.layout.fragment_about, container, false);
-    TextView text = (TextView) view.findViewById(R.id.text4);
+    TextView text = view.findViewById(R.id.text4);
     text.setMovementMethod(LinkMovementMethod.getInstance());
     return view;
   }

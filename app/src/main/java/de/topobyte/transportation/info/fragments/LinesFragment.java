@@ -65,10 +65,10 @@ public class LinesFragment extends Fragment {
     int height = display.getHeight();
     Log.i("display", "size: " + width + " x " + height);
 
-    TextView text1 = (TextView) view.findViewById(R.id.text1);
-    TextView text2 = (TextView) view.findViewById(R.id.text2);
-    FlexGridLayout flex1 = (FlexGridLayout) view.findViewById(R.id.flex1);
-    FlexGridLayout flex2 = (FlexGridLayout) view.findViewById(R.id.flex2);
+    TextView text1 = view.findViewById(R.id.text1);
+    TextView text2 = view.findViewById(R.id.text2);
+    FlexGridLayout flex1 = view.findViewById(R.id.flex1);
+    FlexGridLayout flex2 = view.findViewById(R.id.flex2);
 
     MapModel model = ModelLoader.loadSafe(getActivity());
     final List<Line> lines = model.getData().lines;
