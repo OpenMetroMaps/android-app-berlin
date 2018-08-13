@@ -333,7 +333,7 @@ public class StationFragment extends Fragment {
     @Override
     public void ok()
     {
-      Intent intent = IntentFactory.createAppDetailsIntent(pn);
+      Intent intent = IntentFactory.createGooglePlayAppDetailsIntent(pn);
       startActivity(intent);
     }
 
