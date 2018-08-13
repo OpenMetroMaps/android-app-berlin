@@ -27,13 +27,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
+import android.widget.ZoomControls;
 
 import org.openmetromaps.maps.MapModel;
 import org.openmetromaps.maps.MapView;
 import org.openmetromaps.maps.ModelUtil;
 import org.openmetromaps.maps.PlanRenderer;
 
+import de.topobyte.android.maps.utils.MapZoomControls;
 import de.topobyte.transportation.info.ModelLoader;
+import de.topobyte.transportation.info.berlin.R;
 import de.topobyte.viewports.geometry.Coordinate;
 import de.topobyte.viewports.scrolling.ViewportUtil;
 
@@ -45,12 +48,18 @@ public class NetworkMapFragment extends Fragment {
   public static String STATE_POS_Y = "posY";
   public static String STATE_ZOOM = "zoom";
 
-  NetworkMapView view;
+  private NetworkMapView map;
+  private ZoomControls zoomControls;
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
   {
-    view = new NetworkMapView(getActivity());
+    super.onCreateView(inflater, container, savedInstanceState);
+
+    View layout = inflater.inflate(R.layout.map, container, false);
+
+    map = layout.findViewById(R.id.map);
+    zoomControls = layout.findViewById(R.id.zoom_controls);
 
     MapModel model = ModelLoader.loadSafe(getActivity());
     ModelUtil.ensureView(model);
@@ -70,7 +79,10 @@ public class NetworkMapFragment extends Fragment {
     MapView view = model.getViews().get(viewIndex);
     MapView scaled = ModelUtil.getScaledInstance(view, metrics.density);
 
-    this.view.configure(scaled, PlanRenderer.StationMode.CONVEX, PlanRenderer.SegmentMode.CURVE);
+    map.configure(scaled, PlanRenderer.StationMode.CONVEX, PlanRenderer.SegmentMode.CURVE);
+
+    MapZoomControls<NetworkMapView> mapZoomControls = new MapZoomControls<>(map, zoomControls);
+    map.setOnTouchListener(mapZoomControls);
 
     if (savedInstanceState == null) {
       addStartPositionSetter(scaled.getConfig().getStartPosition(), 1);
@@ -82,7 +94,7 @@ public class NetworkMapFragment extends Fragment {
       addStartPositionSetter(start, zoom);
     }
 
-    return this.view;
+    return layout;
   }
 
   @Override
@@ -90,22 +102,22 @@ public class NetworkMapFragment extends Fragment {
   {
     super.onSaveInstanceState(outState);
 
-    double frx = ViewportUtil.getRealX(view, view.getWidth() / 2);
-    double fry = ViewportUtil.getRealY(view, view.getHeight() / 2);
+    double frx = ViewportUtil.getRealX(map, map.getWidth() / 2);
+    double fry = ViewportUtil.getRealY(map, map.getHeight() / 2);
 
     outState.putDouble(STATE_POS_X, frx);
     outState.putDouble(STATE_POS_Y, fry);
-    outState.putDouble(STATE_ZOOM, view.getZoom());
+    outState.putDouble(STATE_ZOOM, map.getZoom());
   }
 
   private void addStartPositionSetter(final Coordinate start, final double zoom)
   {
-    this.view.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+    map.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
 
       @Override
       public boolean onPreDraw()
       {
-        NetworkMapView v = NetworkMapFragment.this.view;
+        NetworkMapView v = NetworkMapFragment.this.map;
         v.getViewTreeObserver().removeOnPreDrawListener(this);
         v.setPositionX(-start.getX() + v.getWidth() / 2);
         v.setPositionY(-start.getY() + v.getHeight() / 2);

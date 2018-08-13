@@ -35,10 +35,11 @@ import org.openmetromaps.maps.painting.android.AndroidPainter;
 import de.topobyte.android.maps.utils.events.EventManager;
 import de.topobyte.android.maps.utils.events.EventManagerManaged;
 import de.topobyte.android.maps.utils.events.Vector2;
+import de.topobyte.interactiveview.Zoomable;
 import de.topobyte.viewports.geometry.Coordinate;
 import de.topobyte.viewports.scrolling.ViewportUtil;
 
-public class NetworkMapView extends BaseMapWindowView implements EventManagerManaged {
+public class NetworkMapView extends BaseMapWindowView implements EventManagerManaged, Zoomable {
 
   public NetworkMapView(Context context)
   {

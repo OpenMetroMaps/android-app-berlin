@@ -49,6 +49,7 @@ dependencies {
     compile 'org.openmetromaps.omm.v1:omm-maps-android:0.0.3'
     compile 'de.topobyte:viewports-core:0.0.3'
     compile 'de.topobyte:android-map-event-manager:0.0.1'
+    compile 'de.topobyte:android-map-zoom-controls:0.0.2'
     compile 'de.topobyte:android-intent-factory:0.0.1'
     compile 'de.topobyte:jeography-core:0.0.8'
     compile 'org.slf4j:slf4j-android:1.7.12'
