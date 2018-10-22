@@ -17,16 +17,20 @@
 
 package de.topobyte.opnv.model;
 
-public class Borough {
+public class Entity {
 
-  public String getName()
-  {
-    return "Mitte";
-  }
+    private int id;
 
-  public int getLevel()
-  {
-    return 10;
-  }
+    public Entity(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
 }

@@ -1,0 +1,5 @@
+apply plugin: 'java'
+
+dependencies {
+    compile 'org.openmetromaps.omm.v1:omm-maps-model:0.0.3'
+}

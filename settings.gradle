@@ -1,2 +1,4 @@
 rootProject.name = 'Berlin PT'
 include ':app'
+include ':boroughs'
+include ':boroughs-mapper'
