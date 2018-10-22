@@ -54,8 +54,10 @@ import java.util.Set;
 import de.topobyte.adt.geo.Coordinate;
 import de.topobyte.android.intent.utils.IntentFactory;
 import de.topobyte.opnv.model.Borough;
+import de.topobyte.opnv.model.ModelData;
 import de.topobyte.transportation.info.BackgroundUtil;
 import de.topobyte.transportation.info.ColorUtil;
+import de.topobyte.transportation.info.DataLoader;
 import de.topobyte.transportation.info.Direction;
 import de.topobyte.transportation.info.ModelLoader;
 import de.topobyte.transportation.info.StopWithDirectedLine;
@@ -74,6 +76,7 @@ public class StationFragment extends Fragment {
   private TransportActivity activity;
 
   private MapModel model;
+  private ModelData data;
 
   private static String pn = "de.topobyte.apps.offline.stadtplan.berlin";
 //  private String pn = "de.topobyte.apps.maps.atestcity.admob";
@@ -90,6 +93,7 @@ public class StationFragment extends Fragment {
   {
     super.onCreate(savedInstanceState);
     model = ModelLoader.loadSafe(getActivity());
+    data = DataLoader.loadSafe(getActivity(), model);
 
     if (savedInstanceState != null) {
       int id = savedInstanceState.getInt(SAVE_ID);
@@ -133,7 +137,7 @@ public class StationFragment extends Fragment {
 
     headline.setText(station.getName());
 
-    Set<Borough> boroughSet = StationUtil.getBoroughs(station);
+    Set<Borough> boroughSet = StationUtil.getBoroughs(station, data);
     List<Borough> boroughList = BoroughsUtil.getSorted(boroughSet);
     if (boroughSet.size() == 0) {
       boroughs.setVisibility(View.GONE);

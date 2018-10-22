@@ -26,16 +26,18 @@ import java.util.Set;
 
 import de.topobyte.adt.geo.Coordinate;
 import de.topobyte.opnv.model.Borough;
+import de.topobyte.opnv.model.ModelData;
 
 public class StationUtil {
 
 
-  public static Set<Borough> getBoroughs(Station station)
+  public static Set<Borough> getBoroughs(Station station, ModelData data)
   {
     Set<Borough> boroughs = new HashSet<>();
-    for (Stop s : station.getStops()) {
-      // TODO: reimplement boroughs
-//      boroughs.addAll(s.getBoroughs());
+    for (Borough borough : data.boroughs) {
+      if (borough.getStations().contains(station)) {
+        boroughs.add(borough);
+      }
     }
     return boroughs;
   }
