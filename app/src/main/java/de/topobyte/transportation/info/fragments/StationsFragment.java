@@ -179,7 +179,7 @@ public class StationsFragment extends Fragment {
   {
     MapModel model = activity.getApp().getModel();
 
-    List<Station> items = new ArrayList<Station>();
+    List<Station> items = new ArrayList<>();
     if (query == null || query.length() == 0) {
       items = model.getData().stations;
     } else {

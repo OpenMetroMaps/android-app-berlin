@@ -91,7 +91,7 @@ public class NetworkMapView extends BaseMapWindowView implements EventManagerMan
     renderer.paint(painter);
   }
 
-  private final EventManager<NetworkMapView> eventManager = new EventManager<NetworkMapView>(
+  private final EventManager<NetworkMapView> eventManager = new EventManager<>(
       this, true);
 
   public EventManager<NetworkMapView> getEventManager()

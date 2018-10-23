@@ -30,7 +30,7 @@ import java.util.List;
 public abstract class FlexAdapter<T> extends BaseAdapter implements ListAdapter {
 
   private final LayoutInflater inflater;
-  protected List<T> values = new ArrayList<T>();
+  protected List<T> values = new ArrayList<>();
 
   private final int layout;
 
