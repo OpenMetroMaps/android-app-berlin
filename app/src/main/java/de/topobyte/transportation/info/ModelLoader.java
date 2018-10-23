@@ -19,6 +19,7 @@ package de.topobyte.transportation.info;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.util.Log;
 
 import org.openmetromaps.maps.MapModel;
 import org.openmetromaps.maps.xml.DesktopXmlModelReader;
@@ -52,7 +53,7 @@ public class ModelLoader {
     try {
       return load(context);
     } catch (IOException | ParsingException e) {
-      // ignore
+      Log.e("data", "Unable to load model", e);
     }
     return null;
   }

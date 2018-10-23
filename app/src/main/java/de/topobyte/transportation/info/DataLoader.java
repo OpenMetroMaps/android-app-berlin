@@ -19,6 +19,7 @@ package de.topobyte.transportation.info;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.util.Log;
 
 import org.openmetromaps.maps.MapModel;
 
@@ -29,11 +30,10 @@ import java.io.InputStream;
 
 import de.topobyte.opnv.model.ModelData;
 import de.topobyte.opnv.model.ModelReader;
-import de.topobyte.xml.domabstraction.iface.ParsingException;
 
 public class DataLoader {
 
-    public static ModelData load(Context context, MapModel mapModel) throws IOException, ParsingException {
+    public static ModelData load(Context context, MapModel mapModel) throws IOException {
         AssetManager assets = context.getAssets();
         InputStream ais = assets.open("boroughs.data");
 
@@ -49,8 +49,8 @@ public class DataLoader {
     public static ModelData loadSafe(Context context, MapModel mapModel) {
         try {
             return load(context, mapModel);
-        } catch (IOException | ParsingException e) {
-            // ignore
+        } catch (IOException e) {
+            Log.e("data", "Unable to load data", e);
         }
         return null;
     }
