@@ -53,5 +53,5 @@ dependencies {
     compile 'de.topobyte:android-intent-factory:0.0.1'
     compile 'de.topobyte:jeography-core:0.0.8'
     compile 'org.slf4j:slf4j-android:1.7.12'
-    compile project(path: ':boroughs')
+    compile project(':boroughs')
 }
