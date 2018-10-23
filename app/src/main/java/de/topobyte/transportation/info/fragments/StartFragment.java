@@ -24,11 +24,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.openmetromaps.maps.MapModel;
-
 import de.topobyte.android.util.onclick.ClickDelegate;
 import de.topobyte.android.util.onclick.ClickListener;
-import de.topobyte.transportation.info.ModelLoader;
 import de.topobyte.transportation.info.activities.AboutActivity;
 import de.topobyte.transportation.info.activities.LinesActivity;
 import de.topobyte.transportation.info.activities.NetworkMapActivity;
@@ -52,8 +49,6 @@ public class StartFragment extends Fragment implements ClickDelegate {
                            Bundle savedInstanceState)
   {
     View view = inflater.inflate(R.layout.fragment_main, container, false);
-
-    MapModel model = ModelLoader.loadSafe(getActivity());
 
     view.findViewById(R.id.buttonNetworkMapSchematic).setOnClickListener(
         new ClickListener(this, ID_SCHEMATIC_MAP));

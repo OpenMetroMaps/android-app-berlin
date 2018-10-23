@@ -24,6 +24,7 @@ import org.openmetromaps.maps.model.Station;
 import org.openmetromaps.maps.model.Stop;
 
 import de.topobyte.transportation.info.Direction;
+import de.topobyte.transportation.info.TransportApp;
 import de.topobyte.transportation.info.berlin.R;
 import de.topobyte.transportation.info.fragments.LineStopsFragment;
 import de.topobyte.transportation.info.fragments.StationFragment;
@@ -35,6 +36,11 @@ public class TransportActivity extends ToolbarActivity {
   protected void onCreate(Bundle savedInstanceState)
   {
     super.onCreate(savedInstanceState);
+  }
+
+  public TransportApp getApp()
+  {
+    return (TransportApp) getApplication();
   }
 
   public void showLine(Line line, Direction direction, Stop stop)

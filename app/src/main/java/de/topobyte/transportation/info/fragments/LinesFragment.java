@@ -39,7 +39,6 @@ import de.topobyte.android.FlexGridLayout;
 import de.topobyte.transportation.info.BackgroundUtil;
 import de.topobyte.transportation.info.ColorUtil;
 import de.topobyte.transportation.info.Direction;
-import de.topobyte.transportation.info.ModelLoader;
 import de.topobyte.transportation.info.activities.LinesActivity;
 import de.topobyte.transportation.info.berlin.R;
 
@@ -70,7 +69,7 @@ public class LinesFragment extends Fragment {
     FlexGridLayout flex1 = view.findViewById(R.id.flex1);
     FlexGridLayout flex2 = view.findViewById(R.id.flex2);
 
-    MapModel model = ModelLoader.loadSafe(getActivity());
+    MapModel model = activity.getApp().getModel();
     final List<Line> lines = model.getData().lines;
 
     int toolBarColor = getResources().getColor(R.color.background_material_dark);

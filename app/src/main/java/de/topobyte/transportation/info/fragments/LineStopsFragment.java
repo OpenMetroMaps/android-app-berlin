@@ -45,7 +45,6 @@ import java.util.List;
 
 import de.topobyte.android.util.FlexAdapter;
 import de.topobyte.transportation.info.Direction;
-import de.topobyte.transportation.info.ModelLoader;
 import de.topobyte.transportation.info.activities.TransportActivity;
 import de.topobyte.transportation.info.berlin.R;
 import de.topobyte.transportation.info.modelutil.LinesUtil;
@@ -83,7 +82,7 @@ public class LineStopsFragment extends Fragment {
 
     if (savedInstanceState != null) {
       int id = savedInstanceState.getInt(SAVE_ID);
-      MapModel model = ModelLoader.loadSafe(getActivity());
+      MapModel model = activity.getApp().getModel();
       line = model.getData().lines.get(id);
       int dirOrdinal = savedInstanceState.getInt(SAVE_DIR);
       direction = Direction.values()[dirOrdinal];

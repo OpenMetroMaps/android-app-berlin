@@ -52,14 +52,11 @@ import de.topobyte.android.util.AbstractTextWatcher;
 import de.topobyte.android.util.Clearable;
 import de.topobyte.android.util.FlexAdapter;
 import de.topobyte.transportation.info.BackgroundUtil;
-import de.topobyte.transportation.info.ModelLoader;
 import de.topobyte.transportation.info.activities.StationsActivity;
 import de.topobyte.transportation.info.berlin.R;
 
 public class StationsFragment extends Fragment {
   private StationsActivity activity;
-
-  private MapModel model;
 
   private EditText edit;
   private ListView list;
@@ -101,7 +98,6 @@ public class StationsFragment extends Fragment {
     UpdateTextWatcher textWatcher = new UpdateTextWatcher();
     edit.addTextChangedListener(textWatcher);
 
-    model = ModelLoader.loadSafe(getActivity());
     updateListWithQuery(null);
 
     return view;
@@ -181,6 +177,8 @@ public class StationsFragment extends Fragment {
 
   protected void updateListWithQuery(String query)
   {
+    MapModel model = activity.getApp().getModel();
+
     List<Station> items = new ArrayList<Station>();
     if (query == null || query.length() == 0) {
       items = model.getData().stations;

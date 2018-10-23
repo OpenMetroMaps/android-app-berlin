@@ -35,7 +35,7 @@ import org.openmetromaps.maps.ModelUtil;
 import org.openmetromaps.maps.PlanRenderer;
 
 import de.topobyte.android.maps.utils.MapZoomControls;
-import de.topobyte.transportation.info.ModelLoader;
+import de.topobyte.transportation.info.TransportApp;
 import de.topobyte.transportation.info.berlin.R;
 import de.topobyte.viewports.geometry.Coordinate;
 import de.topobyte.viewports.scrolling.ViewportUtil;
@@ -61,7 +61,8 @@ public class NetworkMapFragment extends Fragment {
     map = layout.findViewById(R.id.map);
     zoomControls = layout.findViewById(R.id.zoom_controls);
 
-    MapModel model = ModelLoader.loadSafe(getActivity());
+    TransportApp app = (TransportApp) getActivity().getApplication();
+    MapModel model = app.getModel();
     ModelUtil.ensureView(model);
 
     int viewIndex = 0;
