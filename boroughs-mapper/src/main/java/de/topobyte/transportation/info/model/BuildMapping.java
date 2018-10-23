@@ -15,7 +15,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with android-app-berlin. If not, see <http://www.gnu.org/licenses/>.
 
-package de.topobyte.opnv.model;
+package de.topobyte.transportation.info.model;
 
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.Geometry;

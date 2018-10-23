@@ -28,8 +28,8 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import de.topobyte.opnv.model.ModelData;
-import de.topobyte.opnv.model.ModelReader;
+import de.topobyte.transportation.info.model.ModelData;
+import de.topobyte.transportation.info.model.ModelReader;
 
 public class DataLoader {
 

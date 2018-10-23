@@ -15,17 +15,22 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with android-app-berlin. If not, see <http://www.gnu.org/licenses/>.
 
-package de.topobyte.opnv.model;
+package de.topobyte.transportation.info.model;
 
-import java.util.ArrayList;
-import java.util.List;
+public class Entity {
 
-public class ModelData {
+    private int id;
 
-    public List<Borough> boroughs = new ArrayList<>();
+    public Entity(int id) {
+        this.id = id;
+    }
 
-    public ModelData(List<Borough> boroughs) {
-        this.boroughs = boroughs;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 }

@@ -15,7 +15,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with android-app-berlin. If not, see <http://www.gnu.org/licenses/>.
 
-package de.topobyte.opnv.model;
+package de.topobyte.transportation.info.model;
 
 import org.openmetromaps.maps.MapModel;
 import org.openmetromaps.maps.model.Station;

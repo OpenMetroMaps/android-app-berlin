@@ -25,8 +25,8 @@ import java.util.List;
 import java.util.Set;
 
 import de.topobyte.adt.geo.Coordinate;
-import de.topobyte.opnv.model.Borough;
-import de.topobyte.opnv.model.ModelData;
+import de.topobyte.transportation.info.model.Borough;
+import de.topobyte.transportation.info.model.ModelData;
 
 public class StationUtil {
 

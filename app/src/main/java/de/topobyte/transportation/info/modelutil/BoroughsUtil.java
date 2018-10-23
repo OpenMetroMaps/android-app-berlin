@@ -24,7 +24,7 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-import de.topobyte.opnv.model.Borough;
+import de.topobyte.transportation.info.model.Borough;
 
 public class BoroughsUtil {
 

@@ -4,7 +4,7 @@ import android.app.Application;
 
 import org.openmetromaps.maps.MapModel;
 
-import de.topobyte.opnv.model.ModelData;
+import de.topobyte.transportation.info.model.ModelData;
 
 public class TransportApp extends Application {
 
