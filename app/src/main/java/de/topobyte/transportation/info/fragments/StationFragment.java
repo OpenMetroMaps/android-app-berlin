@@ -52,7 +52,6 @@ import java.util.Set;
 
 import de.topobyte.adt.geo.Coordinate;
 import de.topobyte.android.intent.utils.IntentFactory;
-import de.topobyte.transportation.info.model.Borough;
 import de.topobyte.transportation.info.BackgroundUtil;
 import de.topobyte.transportation.info.ColorUtil;
 import de.topobyte.transportation.info.Direction;
@@ -60,6 +59,7 @@ import de.topobyte.transportation.info.StopWithDirectedLine;
 import de.topobyte.transportation.info.TransportApp;
 import de.topobyte.transportation.info.activities.TransportActivity;
 import de.topobyte.transportation.info.berlin.R;
+import de.topobyte.transportation.info.model.Borough;
 import de.topobyte.transportation.info.modelutil.BoroughsUtil;
 import de.topobyte.transportation.info.modelutil.LinesUtil;
 import de.topobyte.transportation.info.modelutil.StationUtil;
@@ -215,11 +215,8 @@ public class StationFragment extends Fragment {
           dstops.add(new StopWithDirectedLine(stop, Direction.FORWARD));
         }
         if (firstStop.getStation() != station) {
-          // If we're not at the first stop in forward direction
-          if (stop.getLine().isCircular()) {
-            // Add a backward version of this line only if there is no explicit opposite
-            dstops.add(new StopWithDirectedLine(stop, Direction.BACKWARD));
-          }
+          // If we're not at the first stop in backward direction
+          dstops.add(new StopWithDirectedLine(stop, Direction.BACKWARD));
         }
       }
     }
