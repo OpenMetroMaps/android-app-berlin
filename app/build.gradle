@@ -56,4 +56,6 @@ dependencies {
     implementation 'de.topobyte:jeography-core:0.3.0'
     implementation 'org.slf4j:slf4j-android:1.7.36'
     implementation project(':boroughs')
+    // Need to use a recent version of this because we have the BILLING permission in the manifest.
+    implementation 'com.android.billingclient:billing:6.0.1'
 }
