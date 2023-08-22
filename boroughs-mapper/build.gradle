@@ -1,11 +1,11 @@
-apply plugin: 'java'
+apply plugin: 'java-library'
 
 dependencies {
-    compile 'org.openmetromaps.omm.v1:omm-maps-model-xml:0.0.3'
-    compile 'org.openmetromaps.omm.v1:omm-maps-model-xml-desktop:0.0.3'
-    compile 'org.openmetromaps.omm.v1:omm-maps-model-xml-converter:0.0.3'
-    compile 'de.topobyte:system-utils:0.0.1'
-    compile 'de.topobyte:melon-paths:0.0.2'
-    compile 'de.topobyte:jts-indexing:0.0.1'
-    compile project(path: ':boroughs')
+    api 'org.openmetromaps.omm.v1:omm-maps-model-xml:0.0.3'
+    api 'org.openmetromaps.omm.v1:omm-maps-model-xml-desktop:0.0.3'
+    api 'org.openmetromaps.omm.v1:omm-maps-model-xml-converter:0.0.3'
+    api 'de.topobyte:system-utils:0.0.1'
+    api 'de.topobyte:melon-paths:0.0.2'
+    api 'de.topobyte:jts-indexing:0.0.1'
+    api project(path: ':boroughs')
 }

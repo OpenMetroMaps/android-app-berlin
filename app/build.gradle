@@ -5,13 +5,14 @@ def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '28.0.1'
+    compileSdkVersion 33
+    buildToolsVersion '30.0.3'
+    namespace 'de.topobyte.transportation.info.berlin'
 
     defaultConfig {
         applicationId "de.topobyte.transportation.info.berlin"
-        minSdkVersion 9
-        targetSdkVersion 27
+        minSdkVersion 14
+        targetSdkVersion 33
         versionCode 10
         versionName "1.1"
     }
@@ -35,23 +36,24 @@ android {
 }
 
 configurations {
-    compile.exclude group: 'org.slf4j', module: 'slf4j-log4j12'
-    compile.exclude group: 'log4j', module: 'log4j'
-    compile.exclude group: 'com.google.android', module: 'android'
+    implementation.exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+    implementation.exclude group: 'log4j', module: 'log4j'
+    implementation.exclude group: 'com.google.android', module: 'android'
+    implementation.exclude group: 'com.intellij', module: 'annotations'
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:22.1.1'
-    compile 'com.wefika:flowlayout:0.4.0'
-    compile 'org.openmetromaps.omm.v1:omm-maps-model-xml:0.0.3'
-    compile 'org.openmetromaps.omm.v1:omm-maps-model-xml-desktop:0.0.3'
-    compile 'org.openmetromaps.omm.v1:omm-maps-model-xml-converter:0.0.3'
-    compile 'org.openmetromaps.omm.v1:omm-maps-android:0.0.3'
-    compile 'de.topobyte:viewports-core:0.0.3'
-    compile 'de.topobyte:android-map-event-manager:0.0.1'
-    compile 'de.topobyte:android-map-zoom-controls:0.0.2'
-    compile 'de.topobyte:android-intent-factory:0.0.1'
-    compile 'de.topobyte:jeography-core:0.0.8'
-    compile 'org.slf4j:slf4j-android:1.7.12'
-    compile project(':boroughs')
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.wefika:flowlayout:0.4.0'
+    implementation 'org.openmetromaps.omm.v1:omm-maps-model-xml:0.0.3'
+    implementation 'org.openmetromaps.omm.v1:omm-maps-model-xml-desktop:0.0.3'
+    implementation 'org.openmetromaps.omm.v1:omm-maps-model-xml-converter:0.0.3'
+    implementation 'org.openmetromaps.omm.v1:omm-maps-android:0.0.3'
+    implementation 'de.topobyte:viewports-core:0.0.3'
+    implementation 'de.topobyte:android-map-event-manager:0.0.2'
+    implementation 'de.topobyte:android-map-zoom-controls:0.0.2'
+    implementation 'de.topobyte:android-intent-factory:0.0.1'
+    implementation 'de.topobyte:jeography-core:0.3.0'
+    implementation 'org.slf4j:slf4j-android:1.7.36'
+    implementation project(':boroughs')
 }

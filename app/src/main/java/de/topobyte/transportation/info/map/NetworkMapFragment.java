@@ -19,7 +19,6 @@ package de.topobyte.transportation.info.map;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -28,6 +27,8 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.ZoomControls;
+
+import androidx.fragment.app.Fragment;
 
 import org.openmetromaps.maps.MapModel;
 import org.openmetromaps.maps.MapView;

@@ -18,8 +18,9 @@
 package de.topobyte.transportation.info.map;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+
+import androidx.annotation.Nullable;
 
 import org.openmetromaps.maps.LocationToPoint;
 

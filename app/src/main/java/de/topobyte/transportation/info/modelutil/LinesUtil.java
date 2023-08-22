@@ -18,11 +18,12 @@
 package de.topobyte.transportation.info.modelutil;
 
 import android.graphics.Color;
-import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import com.wefika.flowlayout.FlowLayout;
 

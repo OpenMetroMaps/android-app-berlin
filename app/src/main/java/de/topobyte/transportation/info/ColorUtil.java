@@ -17,7 +17,7 @@
 
 package de.topobyte.transportation.info;
 
-import android.support.v4.graphics.ColorUtils;
+import androidx.core.graphics.ColorUtils;
 
 public class ColorUtil {
 

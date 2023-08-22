@@ -20,7 +20,6 @@ package de.topobyte.transportation.info.fragments;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
@@ -29,6 +28,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import org.openmetromaps.maps.MapModel;
 import org.openmetromaps.maps.model.Line;
