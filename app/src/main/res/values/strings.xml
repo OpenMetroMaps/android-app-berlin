@@ -26,7 +26,7 @@
     <string name="map_not_installed">You do not have the Berlin map installed yet, but you can install it for free through Google Play.</string>
     <string name="map_not_new_enough">You have to update the Berlin map to the latest version before you can show stations on the map.</string>
 
-    <string name="copyright" translatable="false">Copyright © 2023 Sebastian Kürten</string>
+    <string name="copyright" translatable="false">Copyright © 2025 Sebastian Kürten</string>
     <string name="about_info1">This app is intended to give you the opportunity to explore the Berlin public transportation network. The app is not quite ready yet but already provides some useful information.</string>
     <string name="about_info2">The information presented here is taken from the <a href="http://wiki.openstreetmap.org/">OpenStreetMap</a> project. The data is licensed under the <a href="http://opendatacommons.org/licenses/odbl/">Open Data Commons Open Database License (ODbL).</a></string>
 
