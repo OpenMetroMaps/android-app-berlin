@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <omm-file version="1.0.0">
   <stations>
     <station lat="52.499964" lon="13.307309" name="Adenauerplatz"/>
@@ -68,7 +68,6 @@
     <station lat="52.514873" lon="13.474635" name="Frankfurter Allee"/>
     <station lat="52.515805" lon="13.453992" name="Frankfurter Tor"/>
     <station lat="52.564527" lon="13.363845" name="Franz-Neumann-Platz"/>
-    <station lat="52.514608" lon="13.389177" name="Französische Straße"/>
     <station lat="52.526238" lon="13.760435" name="Fredersdorf"/>
     <station lat="52.451012" lon="13.281676" name="Freie Universität (Thielplatz)"/>
     <station lat="52.470744" lon="13.341519" name="Friedenau"/>
@@ -171,6 +170,7 @@
     <station lat="52.526369" lon="13.304778" name="Mierendorffplatz"/>
     <station lat="52.511767" lon="13.385178" name="Mohrenstraße"/>
     <station lat="52.503681" lon="13.410694" name="Moritzplatz"/>
+    <station lat="52.517263" lon="13.398884" name="Museumsinsel"/>
     <station lat="52.512337" lon="13.410179" name="Märkisches Museum"/>
     <station lat="52.498896" lon="13.382957" name="Möckernbrücke"/>
     <station lat="52.654829" lon="13.386043" name="Mühlenbeck-Mönchmühle"/>
@@ -228,6 +228,7 @@
     <station lat="52.536999" lon="13.262625" name="Rohrdamm"/>
     <station lat="52.527658" lon="13.410500" name="Rosa-Luxemburg-Platz"/>
     <station lat="52.529740" lon="13.401267" name="Rosenthaler Platz"/>
+    <station lat="52.518843" lon="13.408083" name="Rotes Rathaus"/>
     <station lat="52.416604" lon="13.494587" name="Rudow"/>
     <station lat="52.525631" lon="13.241321" name="Ruhleben"/>
     <station lat="52.501240" lon="13.478474" name="Rummelsburg"/>
@@ -280,6 +281,7 @@
     <station lat="52.526355" lon="13.341434" name="Turmstraße"/>
     <station lat="52.502812" lon="13.326697" name="Uhlandstraße"/>
     <station lat="52.453263" lon="13.384332" name="Ullsteinstraße"/>
+    <station lat="52.514608" lon="13.389177" name="Unter den Linden"/>
     <station lat="52.496215" lon="13.343377" name="Viktoria-Luise-Platz"/>
     <station lat="52.559408" lon="13.413272" name="Vinetastraße"/>
     <station lat="52.542095" lon="13.393039" name="Voltastraße"/>
@@ -803,6 +805,12 @@
       <stop station="Innsbrucker Platz"/>
     </line>
     <line circular="false" color="#835A43" name="U5">
+      <stop station="Hauptbahnhof"/>
+      <stop station="Bundestag"/>
+      <stop station="Brandenburger Tor"/>
+      <stop station="Unter den Linden"/>
+      <stop station="Museumsinsel"/>
+      <stop station="Rotes Rathaus"/>
       <stop station="Alexanderplatz"/>
       <stop station="Schillingstraße"/>
       <stop station="Strausberger Platz"/>
@@ -823,11 +831,6 @@
       <stop station="Louis-Lewin-Straße"/>
       <stop station="Hönow"/>
     </line>
-    <line circular="false" color="#835A43" name="U55">
-      <stop station="Hauptbahnhof"/>
-      <stop station="Bundestag"/>
-      <stop station="Brandenburger Tor"/>
-    </line>
     <line circular="false" color="#8172AD" name="U6">
       <stop station="Alt-Tegel"/>
       <stop station="Borsigwerke"/>
@@ -845,7 +848,7 @@
       <stop station="Naturkundemuseum"/>
       <stop station="Oranienburger Tor"/>
       <stop station="Friedrichstraße"/>
-      <stop station="Französische Straße"/>
+      <stop station="Unter den Linden"/>
       <stop station="Stadtmitte"/>
       <stop station="Kochstraße"/>
       <stop station="Hallesches Tor"/>
@@ -980,7 +983,6 @@
     <edges line="U3"/>
     <edges line="U4"/>
     <edges line="U5"/>
-    <edges line="U55"/>
     <edges line="U6"/>
     <edges line="U7"/>
     <edges line="U8"/>
@@ -1052,7 +1054,6 @@
     <station name="Frankfurter Allee" x="600.311357" y="400.580059"/>
     <station name="Frankfurter Tor" x="561.513950" y="386.091513"/>
     <station name="Franz-Neumann-Platz" x="400.574129" y="255.086213"/>
-    <station name="Französische Straße" x="452.866999" y="398.190862"/>
     <station name="Fredersdorf" x="807.303297" y="372.068530"/>
     <station name="Freie Universität (Thielplatz)" x="242.223699" y="596.778512"/>
     <station name="Friedenau" x="363.906084" y="556.700646"/>
@@ -1155,6 +1156,7 @@
     <station name="Mierendorffplatz" x="290.965168" y="363.171260"/>
     <station name="Mohrenstraße" x="434.284546" y="412.600240"/>
     <station name="Moritzplatz" x="502.180919" y="433.832710"/>
+    <station name="Museumsinsel" x="469.288107" y="396.212415"/>
     <station name="Märkisches Museum" x="481.612500" y="409.283199"/>
     <station name="Möckernbrücke" x="434.167939" y="446.334706"/>
     <station name="Mühlenbeck-Mönchmühle" x="484.137775" y="127.565507"/>
@@ -1212,6 +1214,7 @@
     <station name="Rohrdamm" x="198.562700" y="311.713313"/>
     <station name="Rosa-Luxemburg-Platz" x="495.667677" y="365.707837"/>
     <station name="Rosenthaler Platz" x="471.442164" y="349.115881"/>
+    <station name="Rotes Rathaus" x="484.719991" y="392.057677"/>
     <station name="Rudow" x="582.239061" y="705.412602"/>
     <station name="Ruhleben" x="175.216108" y="368.367147"/>
     <station name="Rummelsburg" x="622.294027" y="451.304856"/>
@@ -1264,6 +1267,7 @@
     <station name="Turmstraße" x="353.811560" y="348.028646"/>
     <station name="Uhlandstraße" x="313.396653" y="445.179436"/>
     <station name="Ullsteinstraße" x="453.873629" y="594.475375"/>
+    <station name="Unter den Linden" x="451.284242" y="395.816726"/>
     <station name="Viktoria-Luise-Platz" x="359.057927" y="456.779912"/>
     <station name="Vinetastraße" x="491.352846" y="271.369368"/>
     <station name="Voltastraße" x="459.116417" y="314.508630"/>
@@ -1329,7 +1333,6 @@
     <edges line="U3"/>
     <edges line="U4"/>
     <edges line="U5"/>
-    <edges line="U55"/>
     <edges line="U6"/>
     <edges line="U7"/>
     <edges line="U8"/>
@@ -1401,7 +1404,6 @@
     <station name="Frankfurter Allee" x="485.963140" y="471.135158"/>
     <station name="Frankfurter Tor" x="463.880919" y="469.496870"/>
     <station name="Franz-Neumann-Platz" x="367.448909" y="383.803931"/>
-    <station name="Französische Straße" x="394.547045" y="471.600974"/>
     <station name="Fredersdorf" x="791.688992" y="451.155163"/>
     <station name="Freie Universität (Thielplatz)" x="279.551122" y="583.308634"/>
     <station name="Friedenau" x="343.566350" y="548.666253"/>
@@ -1504,6 +1506,7 @@
     <station name="Mierendorffplatz" x="304.263783" y="450.924831"/>
     <station name="Mohrenstraße" x="390.269237" y="476.594696"/>
     <station name="Moritzplatz" x="417.564201" y="490.805965"/>
+    <station name="Museumsinsel" x="405.283051" y="470.382591"/>
     <station name="Märkisches Museum" x="417.013295" y="475.592813"/>
     <station name="Möckernbrücke" x="387.893389" y="499.214445"/>
     <station name="Mühlenbeck-Mönchmühle" x="391.194544" y="224.727456"/>
@@ -1561,6 +1564,7 @@
     <station name="Rohrdamm" x="259.171894" y="432.232251"/>
     <station name="Rosa-Luxemburg-Platz" x="417.356675" y="448.658399"/>
     <station name="Rosenthaler Platz" x="407.479955" y="444.997505"/>
+    <station name="Rotes Rathaus" x="411.413462" y="466.754788"/>
     <station name="Rudow" x="507.306185" y="643.679748"/>
     <station name="Ruhleben" x="236.382589" y="452.222417"/>
     <station name="Rummelsburg" x="490.069793" y="495.095546"/>
@@ -1613,6 +1617,7 @@
     <station name="Turmstraße" x="343.475424" y="450.949446"/>
     <station name="Uhlandstraße" x="327.710967" y="492.333090"/>
     <station name="Ullsteinstraße" x="389.364254" y="579.357463"/>
+    <station name="Unter den Linden" x="394.318167" y="470.228002"/>
     <station name="Viktoria-Luise-Platz" x="345.553889" y="503.925253"/>
     <station name="Vinetastraße" x="420.321938" y="392.811773"/>
     <station name="Voltastraße" x="398.678302" y="423.269462"/>
