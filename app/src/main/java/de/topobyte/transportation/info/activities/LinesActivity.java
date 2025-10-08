@@ -33,7 +33,7 @@ public class LinesActivity extends TransportActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_with_toolbar);
 
-    setupToolbar();
+    setupToolbar(true);
     getSupportActionBar().setTitle(R.string.lines);
 
     if (savedInstanceState == null) {

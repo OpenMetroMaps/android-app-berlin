@@ -34,11 +34,13 @@ public class ToolbarActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
   }
 
-  protected void setupToolbar()
+  protected void setupToolbar(boolean up)
   {
     toolbar = findViewById(R.id.my_awesome_toolbar);
     setSupportActionBar(toolbar);
-    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    if (up) {
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
   }
 
   public Toolbar getToolbar()

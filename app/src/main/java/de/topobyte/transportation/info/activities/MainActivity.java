@@ -27,13 +27,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import de.topobyte.transportation.info.berlin.R;
 import de.topobyte.transportation.info.fragments.StartFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends TransportActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState)
   {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
+    setContentView(R.layout.activity_with_toolbar);
+
+    setupToolbar(false);
+
     if (savedInstanceState == null) {
       getSupportFragmentManager().beginTransaction()
           .add(R.id.container, new StartFragment()).commit();

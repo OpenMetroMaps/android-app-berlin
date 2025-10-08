@@ -73,8 +73,6 @@ public class LinesFragment extends Fragment {
     MapModel model = activity.getApp().getModel();
     final List<Line> lines = model.getData().lines;
 
-    int toolBarColor = getResources().getColor(R.color.background_material_dark);
-    activity.getToolbar().setBackgroundColor(toolBarColor);
     activity.getToolbar().setTitle(R.string.lines);
     activity.getToolbar().setSubtitle(null);
 

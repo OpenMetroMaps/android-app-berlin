@@ -33,7 +33,7 @@ public class StationsActivity extends TransportActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_with_toolbar);
 
-    setupToolbar();
+    setupToolbar(true);
     getSupportActionBar().setTitle(R.string.stations);
 
     if (savedInstanceState == null) {

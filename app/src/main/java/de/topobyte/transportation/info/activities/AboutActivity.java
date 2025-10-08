@@ -31,7 +31,7 @@ public class AboutActivity extends TransportActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_with_toolbar);
 
-    setupToolbar();
+    setupToolbar(true);
     getSupportActionBar().setTitle(R.string.about);
 
     if (savedInstanceState == null) {

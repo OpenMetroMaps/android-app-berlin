@@ -113,8 +113,6 @@ public class StationFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState)
   {
-    int toolBarColor = getResources().getColor(R.color.background_material_dark);
-    activity.getToolbar().setBackgroundColor(toolBarColor);
     activity.getToolbar().setTitle(R.string.station);
     activity.getToolbar().setSubtitle(null);
 

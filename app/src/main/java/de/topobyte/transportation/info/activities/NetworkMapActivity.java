@@ -40,7 +40,7 @@ public class NetworkMapActivity extends ToolbarActivity {
 
     String title = getIntent().getStringExtra(EXTRA_TITLE);
 
-    setupToolbar();
+    setupToolbar(true);
     getSupportActionBar().setTitle(title);
 
     if (savedInstanceState == null) {
