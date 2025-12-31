@@ -1,5 +1,7 @@
 This is an Android app that lets you explore the OpenMetroMaps maps of
-Berlin, Germany.
+a few selected cities:
+* Berlin, Germany
+* Vienna, Austria
 
 You can download the app [on Google Play
 here](https://play.google.com/store/apps/details?id=de.topobyte.transportation.info.berlin).
