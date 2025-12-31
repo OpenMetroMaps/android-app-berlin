@@ -9,7 +9,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/text1"
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:text="S-Bahn"
+            android:text="@string/s_bahn"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textStyle="bold"/>
 
@@ -35,7 +35,7 @@
             android:layout_below="@+id/flex1"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:text="U-Bahn"
+            android:text="@string/u_bahn"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textStyle="bold"/>
 
@@ -44,6 +44,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/text2"
+            app:colwidth="90dp"/>
+
+        <TextView
+            android:id="@+id/text3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/flex2"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="@string/lines_other"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"/>
+
+        <de.topobyte.android.FlexGridLayout
+            android:id="@+id/flex3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text3"
             app:colwidth="90dp"/>
 
     </RelativeLayout>

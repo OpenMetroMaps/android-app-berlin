@@ -33,9 +33,9 @@ import de.topobyte.transportation.info.model.ModelReader;
 
 public class DataLoader {
 
-    public static ModelData load(Context context, MapModel mapModel) throws IOException {
+    public static ModelData load(Context context, MapModel mapModel, String region) throws IOException {
         AssetManager assets = context.getAssets();
-        InputStream ais = assets.open("boroughs.data");
+        InputStream ais = assets.open(region + "/boroughs.data");
 
         BufferedInputStream bis = new BufferedInputStream(ais);
         DataInputStream dis = new DataInputStream(bis);
@@ -46,9 +46,9 @@ public class DataLoader {
         return data;
     }
 
-    public static ModelData loadSafe(Context context, MapModel mapModel) {
+    public static ModelData loadSafe(Context context, MapModel mapModel, String region) {
         try {
-            return load(context, mapModel);
+            return load(context, mapModel, region);
         } catch (IOException e) {
             Log.e("data", "Unable to load data", e);
         }

@@ -51,6 +51,7 @@
 
     <queries>
         <package android:name="de.topobyte.apps.offline.stadtplan.berlin" />
+        <package android:name="de.topobyte.apps.offline.stadtplan.wien" />
     </queries>
 
 </manifest>

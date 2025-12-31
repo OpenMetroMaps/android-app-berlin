@@ -17,6 +17,8 @@
 
 package de.topobyte.transportation.info.map;
 
+import static android.view.View.VISIBLE;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -28,7 +30,9 @@ import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.ZoomControls;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import org.openmetromaps.maps.MapModel;
 import org.openmetromaps.maps.MapView;
@@ -36,13 +40,16 @@ import org.openmetromaps.maps.ModelUtil;
 import org.openmetromaps.maps.PlanRenderer;
 
 import de.topobyte.android.maps.utils.MapZoomControls;
-import de.topobyte.transportation.info.TransportApp;
+import de.topobyte.transportation.info.RegionDataViewModel;
+import de.topobyte.transportation.info.Region;
+import de.topobyte.transportation.info.StartPosition;
 import de.topobyte.transportation.info.berlin.R;
 import de.topobyte.viewports.geometry.Coordinate;
 import de.topobyte.viewports.scrolling.ViewportUtil;
 
 public class NetworkMapFragment extends Fragment {
 
+  public static String ARG_REGION = "region";
   public static String ARG_VIEW_INDEX = "view-index";
 
   public static String STATE_POS_X = "posX";
@@ -51,6 +58,41 @@ public class NetworkMapFragment extends Fragment {
 
   private NetworkMapView map;
   private ZoomControls zoomControls;
+
+  private RegionDataViewModel vm;
+
+  @Override
+  public void onCreate(@Nullable Bundle savedInstanceState)
+  {
+    super.onCreate(savedInstanceState);
+
+    String regionId = null;
+    Bundle args = getArguments();
+    if (args != null) {
+      regionId = args.getString(ARG_REGION, Region.BERLIN.getStringId());
+    }
+    Region region = Region.findByStringId(regionId);
+
+    vm = new ViewModelProvider(this).get(RegionDataViewModel.class);
+
+    vm.getState().observe(this, state -> {
+      switch (state.status) {
+        case IDLE:
+          break;
+        case LOADING:
+          break;
+        case READY:
+          init(state.data.getModel());
+          break;
+        case ERROR:
+          break;
+      }
+    });
+
+    vm.loadIfNeeded(region);
+  }
+
+  private StartPosition startPosition = null;
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -62,10 +104,19 @@ public class NetworkMapFragment extends Fragment {
     map = layout.findViewById(R.id.map);
     zoomControls = layout.findViewById(R.id.zoom_controls);
 
-    TransportApp app = (TransportApp) getActivity().getApplication();
-    MapModel model = app.getModel();
-    ModelUtil.ensureView(model);
+    if (savedInstanceState != null) {
+      double positionX = savedInstanceState.getDouble(STATE_POS_X);
+      double positionY = savedInstanceState.getDouble(STATE_POS_Y);
+      double zoom = savedInstanceState.getDouble(STATE_ZOOM);
+      Coordinate start = new Coordinate(positionX, positionY);
+      startPosition = new StartPosition(start, zoom);
+    }
 
+    return layout;
+  }
+
+  private void init(MapModel model)
+  {
     int viewIndex = 0;
     Bundle args = getArguments();
     if (args != null) {
@@ -86,17 +137,13 @@ public class NetworkMapFragment extends Fragment {
     MapZoomControls<NetworkMapView> mapZoomControls = new MapZoomControls<>(map, zoomControls);
     map.setOnTouchListener(mapZoomControls);
 
-    if (savedInstanceState == null) {
+    if (startPosition == null) {
       addStartPositionSetter(scaled.getConfig().getStartPosition(), 1);
     } else {
-      double positionX = savedInstanceState.getDouble(STATE_POS_X);
-      double positionY = savedInstanceState.getDouble(STATE_POS_Y);
-      double zoom = savedInstanceState.getDouble(STATE_ZOOM);
-      Coordinate start = new Coordinate(positionX, positionY);
-      addStartPositionSetter(start, zoom);
+      addStartPositionSetter(startPosition.getStart(), startPosition.getZoom());
     }
 
-    return layout;
+    map.setVisibility(VISIBLE);
   }
 
   @Override

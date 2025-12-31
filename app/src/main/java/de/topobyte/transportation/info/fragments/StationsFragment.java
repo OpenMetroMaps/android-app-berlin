@@ -17,6 +17,8 @@
 
 package de.topobyte.transportation.info.fragments;
 
+import static android.view.View.VISIBLE;
+
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
@@ -28,13 +30,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.wefika.flowlayout.FlowLayout;
 
@@ -53,14 +56,32 @@ import de.topobyte.android.util.AbstractTextWatcher;
 import de.topobyte.android.util.Clearable;
 import de.topobyte.android.util.FlexAdapter;
 import de.topobyte.transportation.info.BackgroundUtil;
+import de.topobyte.transportation.info.Region;
+import de.topobyte.transportation.info.RegionDataViewModel;
 import de.topobyte.transportation.info.activities.StationsActivity;
 import de.topobyte.transportation.info.berlin.R;
 
 public class StationsFragment extends Fragment {
+
+  public static String ARG_REGION = "region";
+
   private StationsActivity activity;
 
   private EditText edit;
   private ListView list;
+
+  private RegionDataViewModel vm;
+  private Region region;
+
+  @Override
+  public void onCreate(@Nullable Bundle savedInstanceState)
+  {
+    super.onCreate(savedInstanceState);
+
+    Bundle args = requireArguments();
+    String regionId = args.getString(ARG_REGION, Region.BERLIN.getStringId());
+    region = Region.findByStringId(regionId);
+  }
 
   @Override
   public void onAttach(Activity activity)
@@ -73,35 +94,62 @@ public class StationsFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState)
   {
+    activity.getToolbar().setTitle(R.string.stations);
+    activity.getToolbar().setSubtitle(region.getNameStringId());
+
     View view = inflater.inflate(R.layout.fragment_stations, container,
         false);
 
     edit = view.findViewById(R.id.editText);
     list = view.findViewById(R.id.list);
 
+    return view;
+  }
+
+  @Override
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
+  {
+    super.onViewCreated(view, savedInstanceState);
+
+    vm = new ViewModelProvider(requireActivity()).get(RegionDataViewModel.class);
+
+    vm.getState().observe(getViewLifecycleOwner(), state -> {
+      switch (state.status) {
+        case IDLE:
+          break;
+        case LOADING:
+          break;
+        case READY:
+          init();
+          break;
+        case ERROR:
+          break;
+      }
+    });
+
+    vm.loadIfNeeded(region);
+  }
+
+  private void init()
+  {
+    edit.setVisibility(VISIBLE);
+    list.setVisibility(VISIBLE);
+
     Clearable.setClearable(edit);
 
-    list.setOnItemClickListener(new OnItemClickListener() {
+    list.setOnItemClickListener((parent, view1, position, id) -> {
+      Station station = (Station) parent.getItemAtPosition(position);
+      activity.showStation(region.getStringId(), station);
 
-      @Override
-      public void onItemClick(AdapterView<?> parent, View view,
-                              int position, long id)
-      {
-        Station station = (Station) parent.getItemAtPosition(position);
-        activity.showStation(station);
-
-        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(
-            Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(edit.getWindowToken(), 0);
-      }
+      InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(
+          Context.INPUT_METHOD_SERVICE);
+      imm.hideSoftInputFromWindow(edit.getWindowToken(), 0);
     });
 
     UpdateTextWatcher textWatcher = new UpdateTextWatcher();
     edit.addTextChangedListener(textWatcher);
 
     updateListWithQuery(null);
-
-    return view;
   }
 
   @Override
@@ -178,7 +226,7 @@ public class StationsFragment extends Fragment {
 
   protected void updateListWithQuery(String query)
   {
-    MapModel model = activity.getApp().getModel();
+    MapModel model = vm.getState().getValue().data.getModel();
 
     List<Station> items = new ArrayList<>();
     if (query == null || query.length() == 0) {

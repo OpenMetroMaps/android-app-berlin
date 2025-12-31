@@ -6,6 +6,7 @@
 
     <de.topobyte.transportation.info.map.NetworkMapView
         android:id="@+id/map"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

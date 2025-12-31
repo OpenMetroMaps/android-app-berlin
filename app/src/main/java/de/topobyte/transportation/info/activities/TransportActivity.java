@@ -24,6 +24,7 @@ import org.openmetromaps.maps.model.Station;
 import org.openmetromaps.maps.model.Stop;
 
 import de.topobyte.transportation.info.Direction;
+import de.topobyte.transportation.info.Region;
 import de.topobyte.transportation.info.TransportApp;
 import de.topobyte.transportation.info.berlin.R;
 import de.topobyte.transportation.info.fragments.LineStopsFragment;
@@ -43,17 +44,21 @@ public class TransportActivity extends ToolbarActivity {
     return (TransportApp) getApplication();
   }
 
-  public void showLine(Line line, Direction direction, Stop stop)
+  public void showLine(String regionId, Line line, Direction direction, Stop stop)
   {
-    LineStopsFragment stopsFragment = LineStopsFragment.newInstance(line, direction, stop);
+    int stationId = -1;
+    if (stop != null) {
+      stationId = stop.getStation().getId();
+    }
+    LineStopsFragment stopsFragment = LineStopsFragment.newInstance(regionId, line.getId(), direction, stationId);
     getSupportFragmentManager().beginTransaction()
         .replace(R.id.container, stopsFragment).addToBackStack(null)
         .commit();
   }
 
-  public void showStation(Station station)
+  public void showStation(String regionId, Station station)
   {
-    StationFragment stationFragment = StationFragment.newInstance(station);
+    StationFragment stationFragment = StationFragment.newInstance(regionId, station.getId());
     getSupportFragmentManager().beginTransaction()
         .replace(R.id.container, stationFragment).addToBackStack(null)
         .commit();

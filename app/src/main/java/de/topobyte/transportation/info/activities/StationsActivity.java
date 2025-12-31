@@ -24,8 +24,11 @@ import android.view.MenuItem;
 
 import de.topobyte.transportation.info.berlin.R;
 import de.topobyte.transportation.info.fragments.StationsFragment;
+import de.topobyte.transportation.info.map.NetworkMapFragment;
 
 public class StationsActivity extends TransportActivity {
+
+  public static String EXTRA_REGION = "region";
 
   @Override
   protected void onCreate(Bundle savedInstanceState)
@@ -33,12 +36,20 @@ public class StationsActivity extends TransportActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_with_toolbar);
 
+    String region = getIntent().getStringExtra(EXTRA_REGION);
+
     setupToolbar(true);
     getSupportActionBar().setTitle(R.string.stations);
 
     if (savedInstanceState == null) {
+      Bundle args = new Bundle();
+      args.putString(StationsFragment.ARG_REGION, region);
+
+      StationsFragment fragment = new StationsFragment();
+      fragment.setArguments(args);
+
       getSupportFragmentManager().beginTransaction()
-          .add(R.id.container, new StationsFragment()).commit();
+          .add(R.id.container, fragment).commit();
     }
   }
 

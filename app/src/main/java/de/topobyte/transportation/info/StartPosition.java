@@ -17,8 +17,25 @@
 
 package de.topobyte.transportation.info;
 
-import android.app.Application;
+import de.topobyte.viewports.geometry.Coordinate;
 
-public class TransportApp extends Application {
+public class StartPosition {
+  private final Coordinate start;
+  private final double zoom;
 
+  public StartPosition(Coordinate start, double zoom)
+  {
+    this.start = start;
+    this.zoom = zoom;
+  }
+
+  public Coordinate getStart()
+  {
+    return start;
+  }
+
+  public double getZoom()
+  {
+    return zoom;
+  }
 }

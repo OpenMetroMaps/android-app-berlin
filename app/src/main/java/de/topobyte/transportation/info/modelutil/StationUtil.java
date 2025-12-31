@@ -33,7 +33,7 @@ public class StationUtil {
 
   public static Set<Borough> getBoroughs(Station station, ModelData data)
   {
-    // TODO: make this more efficient by building an index in the TransportApp class
+    // TODO: make this more efficient by building an index in the RegionData class
     Set<Borough> boroughs = new HashSet<>();
     for (Borough borough : data.boroughs) {
       if (borough.getStations().contains(station)) {

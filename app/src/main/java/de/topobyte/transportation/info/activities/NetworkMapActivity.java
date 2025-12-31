@@ -22,14 +22,16 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import de.topobyte.transportation.info.Region;
 import de.topobyte.transportation.info.berlin.R;
 import de.topobyte.transportation.info.map.NetworkMapFragment;
 
 
 public class NetworkMapActivity extends ToolbarActivity {
 
+  public static String EXTRA_REGION = "region";
   public static String EXTRA_VIEW_INDEX = "view-index";
-  public static String EXTRA_TITLE = "title_sdfs";
+  public static String EXTRA_TITLE = "title";
 
   @Override
   protected void onCreate(Bundle savedInstanceState)
@@ -38,15 +40,20 @@ public class NetworkMapActivity extends ToolbarActivity {
 
     setContentView(R.layout.activity_with_toolbar);
 
+    String regionId = getIntent().getStringExtra(EXTRA_REGION);
     String title = getIntent().getStringExtra(EXTRA_TITLE);
+
+    Region region = Region.findByStringId(regionId);
 
     setupToolbar(true);
     getSupportActionBar().setTitle(title);
+    getSupportActionBar().setSubtitle(region.getNameStringId());
 
     if (savedInstanceState == null) {
       int viewIndex = getIntent().getIntExtra(EXTRA_VIEW_INDEX, 0);
 
       Bundle args = new Bundle();
+      args.putString(NetworkMapFragment.ARG_REGION, regionId);
       args.putInt(NetworkMapFragment.ARG_VIEW_INDEX, viewIndex);
 
       NetworkMapFragment fragment = new NetworkMapFragment();

@@ -27,18 +27,27 @@ import de.topobyte.transportation.info.fragments.LinesFragment;
 
 public class LinesActivity extends TransportActivity {
 
+  public static String EXTRA_REGION = "region";
+
   @Override
   protected void onCreate(Bundle savedInstanceState)
   {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_with_toolbar);
 
+    String regionId = getIntent().getStringExtra(EXTRA_REGION);
+
     setupToolbar(true);
-    getSupportActionBar().setTitle(R.string.lines);
 
     if (savedInstanceState == null) {
+      Bundle args = new Bundle();
+      args.putString(LinesFragment.ARG_REGION, regionId);
+
+      LinesFragment fragment = new LinesFragment();
+      fragment.setArguments(args);
+
       getSupportFragmentManager().beginTransaction()
-          .add(R.id.container, new LinesFragment()).commit();
+          .add(R.id.container, fragment).commit();
     }
   }
 
