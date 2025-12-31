@@ -31,47 +31,33 @@ import org.openmetromaps.maps.xml.XmlModel;
 import org.openmetromaps.maps.xml.XmlModelConverter;
 
 import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import de.topobyte.jts.indexing.GeometryTesselationMap;
 import de.topobyte.melon.paths.PathUtil;
 import de.topobyte.system.utils.SystemPaths;
 import de.topobyte.xml.domabstraction.iface.ParsingException;
 
-public class BuildMapping {
+public class BuildMappingVienna {
 
     public static void main(String[] args) throws IOException, ParsingException, ParseException {
-        BuildMapping task = new BuildMapping();
+        BuildMappingVienna task = new BuildMappingVienna();
         task.execute();
     }
 
     private List<Borough> boroughsList = new ArrayList<>();
-    private Map<Borough, Integer> boroughToIndex = new HashMap<>();
-    private Map<Station, Integer> stationToIndex = new HashMap<>();
 
     public void execute() throws IOException, ParseException, ParsingException {
-        Path pathBoroughs = SystemPaths.HOME.resolve("github/ThatsBerlin/admin-areas");
-        Path pathOMM = SystemPaths.CWD.resolve("app/src/main/assets/model.omm");
-        Path pathData = SystemPaths.CWD.resolve("app/src/main/assets/boroughs.data");
+        Path pathOMM = SystemPaths.CWD.resolve("app/src/main/assets/vienna/model.omm");
+        Path pathData = SystemPaths.CWD.resolve("app/src/main/assets/vienna/boroughs.data");
 
-        System.out.println(pathBoroughs);
         System.out.println(pathOMM);
-
-        GeometryTesselationMap<Borough> tesselationBundesland = load(pathBoroughs, "bundesland", 4);
-        GeometryTesselationMap<Borough> tesselationBezirk = load(pathBoroughs, "berlin-bezirk", 9);
-        GeometryTesselationMap<Borough> tesselationOrtsteil = load(pathBoroughs, "berlin-ortsteil", 10);
 
         InputStream is = Files.newInputStream(pathOMM);
         BufferedInputStream bis = new BufferedInputStream(is);
@@ -79,25 +65,19 @@ public class BuildMapping {
         XmlModel xmlModel = DesktopXmlModelReader.read(bis);
         MapModel model = new XmlModelConverter().convert(xmlModel);
 
+        MappingWriter mappingWriter = new MappingWriter();
+
         int index = 0;
         for (Station station : model.getData().stations) {
-            stationToIndex.put(station, index++);
+            mappingWriter.putStation(station, index++);
         }
 
         index = 0;
         for (Borough borough : boroughsList) {
-            boroughToIndex.put(borough, index++);
+            mappingWriter.putBorough(borough, index++);
         }
 
-        for (Station station : model.getData().stations) {
-            Coordinate c = new Coordinate(station.getLocation().getLongitude(), station.getLocation().getLatitude());
-            Point point = new GeometryFactory().createPoint(c);
-            map(station, point, tesselationBundesland);
-            map(station, point, tesselationBezirk);
-            map(station, point, tesselationOrtsteil);
-        }
-
-        write(pathData);
+        mappingWriter.write(boroughsList, pathData);
     }
 
 
@@ -116,53 +96,6 @@ public class BuildMapping {
             tesselation.add(geometry, borough);
         }
         return tesselation;
-    }
-
-    private void map(Station station, Point point, GeometryTesselationMap<Borough> tesselation) {
-        Set<Borough> boroughs = tesselation.test(point);
-        for (Borough b : boroughs) {
-            b.getStations().add(station);
-        }
-    }
-
-    private DataOutputStream dos;
-
-    private void write(Path pathOutput) throws IOException {
-        OutputStream fos = Files.newOutputStream(pathOutput);
-        OutputStream bos = new BufferedOutputStream(fos);
-        dos = new DataOutputStream(bos);
-
-        writeBoroughs();
-        writeBoroughsToStops();
-
-        dos.close();
-    }
-
-    private void writeBoroughs() throws IOException
-    {
-        dos.writeShort(boroughsList.size());
-        for (Borough borough : boroughsList) {
-            dos.writeByte(borough.getLevel());
-            dos.writeUTF(borough.getName());
-        }
-    }
-
-    private void writeBoroughsToStops() throws IOException
-    {
-        int n = 0;
-        for (Borough borough : boroughsList) {
-            n += borough.getStations().size();
-        }
-        dos.writeShort(n);
-        for (Borough borough : boroughsList) {
-            int a = boroughToIndex.get(borough);
-            Set<Station> stations = borough.getStations();
-            for (Station station : stations) {
-                int b = stationToIndex.get(station);
-                dos.writeShort(a);
-                dos.writeShort(b);
-            }
-        }
     }
 
 }
