@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="intro">Diese App war ursprünglich nur für Berlin.
+        Jetzt werden mehrere Städte unterstützt. Wir hoffen das gefällt dir.
+        Bitte wähle unten die gewünschte Stadt.</string>
+
     <string name="berlin">Berlin</string>
     <string name="vienna">Wien</string>
 

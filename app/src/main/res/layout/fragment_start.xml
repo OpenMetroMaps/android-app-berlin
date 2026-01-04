@@ -10,8 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <TextView
+            android:text="@string/intro"
+            android:id="@+id/intro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
         <Button
             android:id="@+id/buttonBerlin"
+            android:layout_below="@id/intro"
             style="@style/MainButtonStyle"
             android:text="@string/berlin"/>
 

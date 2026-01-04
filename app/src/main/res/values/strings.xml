@@ -3,6 +3,10 @@
 
     <string name="app_name" translatable="false">Open Metro Maps</string>
 
+    <string name="intro">This app used be about Berlin only.
+        Now it starts to support multiple cities. We hope you enjoy
+        this. Please select your desired city below.</string>
+
     <string name="berlin">Berlin</string>
     <string name="vienna">Vienna</string>
 
