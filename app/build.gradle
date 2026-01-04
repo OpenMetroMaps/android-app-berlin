@@ -5,6 +5,7 @@ def keystoreProperties = new Properties()
 def signingConfigured = false
 if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+    signingConfigured = true
 }
 
 android {
