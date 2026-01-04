@@ -24,7 +24,6 @@ import android.view.MenuItem;
 
 import de.topobyte.transportation.info.berlin.R;
 import de.topobyte.transportation.info.fragments.StationsFragment;
-import de.topobyte.transportation.info.map.NetworkMapFragment;
 
 public class StationsActivity extends TransportActivity {
 

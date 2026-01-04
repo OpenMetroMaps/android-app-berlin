@@ -24,7 +24,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import de.topobyte.android.appversions.BuildConfig;
 import de.topobyte.android.appversions.VersionUpdateChecker;

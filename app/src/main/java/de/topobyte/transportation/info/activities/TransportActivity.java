@@ -24,7 +24,6 @@ import org.openmetromaps.maps.model.Station;
 import org.openmetromaps.maps.model.Stop;
 
 import de.topobyte.transportation.info.Direction;
-import de.topobyte.transportation.info.Region;
 import de.topobyte.transportation.info.TransportApp;
 import de.topobyte.transportation.info.berlin.R;
 import de.topobyte.transportation.info.fragments.LineStopsFragment;

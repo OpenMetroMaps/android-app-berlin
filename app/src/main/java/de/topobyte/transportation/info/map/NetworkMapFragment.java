@@ -40,8 +40,8 @@ import org.openmetromaps.maps.ModelUtil;
 import org.openmetromaps.maps.PlanRenderer;
 
 import de.topobyte.android.maps.utils.MapZoomControls;
-import de.topobyte.transportation.info.RegionDataViewModel;
 import de.topobyte.transportation.info.Region;
+import de.topobyte.transportation.info.RegionDataViewModel;
 import de.topobyte.transportation.info.StartPosition;
 import de.topobyte.transportation.info.berlin.R;
 import de.topobyte.viewports.geometry.Coordinate;
