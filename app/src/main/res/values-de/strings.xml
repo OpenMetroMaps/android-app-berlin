@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">OpenMetroMaps</string>
-
     <string name="berlin">Berlin</string>
     <string name="vienna">Wien</string>
 
