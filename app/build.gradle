@@ -53,6 +53,7 @@ dependencies {
     implementation 'org.openmetromaps.omm.v1:omm-maps-model-xml-desktop:0.0.3'
     implementation 'org.openmetromaps.omm.v1:omm-maps-model-xml-converter:0.0.3'
     implementation 'org.openmetromaps.omm.v1:omm-maps-android:0.0.3'
+    implementation 'de.topobyte:android-app-version-util:0.0.1'
     implementation 'de.topobyte:viewports-core:0.0.3'
     implementation 'de.topobyte:android-map-event-manager:0.0.2'
     implementation 'de.topobyte:android-map-zoom-controls:0.0.2'
