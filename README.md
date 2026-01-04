@@ -11,8 +11,10 @@ link](https://play.google.com/apps/testing/de.topobyte.transportation.info.berli
 to join the beta program for the app.
 
 You can also browse the maps online:
-[geographic map](https://openmetromaps.org/demo/berlin/geographic),
-[schematic map](https://openmetromaps.org/demo/berlin/schematic).
+* [Berlin geographic map](https://openmetromaps.org/demo/berlin/geographic),
+* [Berlin schematic map](https://openmetromaps.org/demo/berlin/schematic),
+* [Vienna geographic map](https://openmetromaps.org/demo/vienna/geographic),
+* [Vienna schematic map](https://openmetromaps.org/demo/vienna/schematic).
 
 Upload to Google Play:
 
